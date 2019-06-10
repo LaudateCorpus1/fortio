@@ -342,12 +342,14 @@ func getField(fld reflect.StructField) field {
 			f.defaultValue = t[1]
 		} else if t[0] == "usage" {
 			f.usage = t[1]
-		} else if t[0] == "env" {
+		} else if t[0] == string(environmentVariable) {
 			f.env = t[1]
+			f.namespace = environmentVariable
 		} else if t[0] == "required" {
 			f.required = true
 		} else if t[0] == "url" {
 			f.url = t[1]
+			f.namespace = configURL
 		}
 
 	}
